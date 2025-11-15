@@ -7,8 +7,12 @@ export default function RecursosPage() {
         <div className="container">
           <h2 className="section-title">Recursos</h2>
           <p className="section-subtitle">
-            <h1>Organize seu networking.</h1> 
-            <h1>Otimize seu tempo.</h1> 
+            <h1>
+                Organize seu networking.
+            </h1> 
+            <h1>
+                Otimize seu tempo.
+            </h1> 
           </p>
 
           <div className="features-grid">
