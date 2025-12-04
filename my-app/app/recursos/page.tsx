@@ -6,14 +6,14 @@ export default function RecursosPage() {
       <section className="section-recursos">
         <div className="container">
           <h2 className="section-title">Recursos</h2>
-          <p className="section-subtitle">
+          <div className="section-subtitle">
             <h1>
                 Organize seu networking.
             </h1> 
             <h1>
                 Otimize seu tempo.
             </h1> 
-          </p>
+          </div>
 
           <div className="features-grid">
             <div className="feature-card">

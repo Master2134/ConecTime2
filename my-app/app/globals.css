@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Scroll suave para os links do menu */
 html {
   scroll-behavior: smooth;
@@ -272,6 +276,18 @@ body {
 .input:focus {
   border-color: #2563eb;
   box-shadow: 0 0 0 1px rgb(37 99 235 / 0.2);
+}
+
+textarea.input {
+  border-radius: 8px;
+  padding: 0.75rem;
+  resize: vertical;
+  font-family: inherit;
+}
+
+textarea.input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgb(37 99 235 / 0.1);
 }
 
 /* Seções gerais */
