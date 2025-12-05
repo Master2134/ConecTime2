@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  # Serviço da Aplicação (FastAPI)
+  api:
+    build: .
+    container_name: contatos_api
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - .:/app  # Hot-reload: altera no Windows, reflete no Docker na hora
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy # Só inicia a API quando o banco estiver pronto
+    env_file:
+      - .env
+    environment:
+      # Sobrescreve o HOST para usar o nome do serviço do banco interno
+      - DB_HOST=db 
+    networks:
+      - backend_net
+
+  # Serviço do Banco de Dados (MySQL)
+  db:
+    image: mysql:8.0
+    container_name: contatos_db
+    restart: always
+    # Fix para compatibilidade de autenticação antiga (evita erros de driver)
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+    ports:
+      - "${DB_PORT}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql # Persistência dos dados
+    networks:
+      - backend_net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  # (Opcional) Interface visual para o Banco
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: contatos_pma
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    networks:
+      - backend_net
+
+volumes:
+  mysql_data:
+
+networks:
+  backend_net:
+    driver: bridge
