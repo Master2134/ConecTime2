@@ -14,24 +14,9 @@ export default function Page() {
             interface intuitiva, moderna e confiável.
           </p>
         </div>
-
-        <div className="mockup-card">
-          <div className="mockup-header">
-            <span className="dot" />
-            <span className="dot" />
-            <span className="dot" />
-          </div>
-          <div className="mockup-body">
-            <div className="mockup-sidebar" />
-            <div className="mockup-list">
-              <div className="mockup-row" />
-              <div className="mockup-row" />
-              <div className="mockup-row" />
-              <div className="mockup-row" />
-            </div>
-          </div>
-        </div>
       </div>
+
+      
     </section>
   );
 }

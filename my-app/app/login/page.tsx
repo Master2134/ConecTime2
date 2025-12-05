@@ -70,19 +70,6 @@ export default function LoginPage() {
           <div className="form-card">
             <h3>Crie sua conta</h3>
 
-            <p className="form-subtitle">Conecte com uma das plataformas:</p>
-            <div className="social-row">
-              <button className="social-btn" disabled>
-                <Image src="/logo-Google.png" alt="Google" width={70} height={50} />
-              </button>
-              <button className="social-btn" disabled>
-                <Image src="/logo-facebook.png" alt="Logo Facebook" width={50} height={45} />
-              </button>
-              <button className="social-btn" disabled>
-                <Image src="/logo-intagram.png" alt="Logo Instagram" width={50} height={45} />
-              </button>
-            </div>
-
             <form onSubmit={handleRegister}>
               {error && <p style={{ color: "red", marginBottom: "1rem" }}>{error}</p>}
               
@@ -141,19 +128,6 @@ export default function LoginPage() {
         {activeTab === "login" && (
           <div className="form-card">
             <h3>Já tem uma conta?</h3>
-
-            <p className="form-subtitle">Conecte com uma das plataformas:</p>
-            <div className="social-row">
-              <button className="social-btn" disabled>
-                <Image src="/logo-Google.png" alt="Google" width={70} height={50} />
-              </button>
-              <button className="social-btn" disabled>
-                <Image src="/logo-facebook.png" alt="Logo Facebook" width={50} height={45} />
-              </button>
-              <button className="social-btn" disabled>
-                <Image src="/logo-intagram.png" alt="Logo Instagram" width={50} height={45} />
-              </button>
-            </div>
 
             <form onSubmit={handleLogin}>
               {error && <p style={{ color: "red", marginBottom: "1rem" }}>{error}</p>}
