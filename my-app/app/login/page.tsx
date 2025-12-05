@@ -11,7 +11,7 @@ export default function LoginPage() {
   const { login } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const [activeTab, setActiveTab] = useState("register");
+  const [activeTab, setActiveTab] = useState("login");
 
   // Registro
   const [registerData, setRegisterData] = useState({
@@ -54,8 +54,8 @@ export default function LoginPage() {
       login(response.access_token);
       localStorage.setItem("user_email", loginData.email);
 
-      // Redirecionar para a página de contatos
-      router.push("/contatos");
+      // Redirecionar para a página de contatos com reload forçado
+      window.location.href = "/contatos";
     } catch (err: any) {
       setError(err.message);
     } finally {
